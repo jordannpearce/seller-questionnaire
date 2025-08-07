@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Seller Questionnaire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4 sm:p-6">
+    <div class="bg-white rounded-xl shadow-2xl p-6 sm:p-10 max-w-4xl w-full">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800">Home Seller Questionnaire</h1>
+            <p class="mt-2 text-gray-600 text-lg">Please provide us with details about your property.</p>
+        </div>
+
+        <!-- This is where the success message will be displayed -->
+        <div id="form-status" class="hidden mb-6 p-4 text-sm rounded-md text-green-700 bg-green-100 border border-green-200" role="alert">
+            <span class="font-medium">Success!</span> Your submission has been sent.
+        </div>
+
+        <form id="questionnaire-form" class="space-y-6">
+            <!-- Web3Forms API Key -->
+            <input type="hidden" name="access_key" value="eef070b4-873d-46d0-a30f-ae59e1b26e00">
+            <!-- Web3Forms Email Subject -->
+            <input type="hidden" name="_subject" value="New Seller Questionaire Submitted">
+
+            <!-- Seller Contact Information -->
+            <div class="space-y-6">
+                <h2 class="text-2xl font-semibold text-gray-700">Seller Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="sellers-name" class="block text-sm font-medium text-gray-700">Sellers Name</label>
+                        <input type="text" id="sellers-name" name="Sellers Name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone #</label>
+                        <input type="tel" id="phone" name="Phone #" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="EMAIL" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-200">
+
+            <!-- Property Details -->
+            <div class="space-y-6">
+                <h2 class="text-2xl font-semibold text-gray-700">Property Details</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-2">
+                        <label for="property-address" class="block text-sm font-medium text-gray-700">Property Address for Sale</label>
+                        <input type="text" id="property-address" name="Property address for sale" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Are you on the title?</label>
+                        <div class="mt-2 space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="Are they the one who is on the title?" value="Yes" class="form-radio h-4 w-4 text-indigo-600">
+                                <span class="ml-2 text-gray-700">Yes</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="Are they the one who is on the title?" value="No" class="form-radio h-4 w-4 text-indigo-600">
+                                <span class="ml-2 text-gray-700">No</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="other-on-title" class="block text-sm font-medium text-gray-700">If not, who else?</label>
+                        <input type="text" id="other-on-title" name="If not who else?" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="mortgage" class="block text-sm font-medium text-gray-700">Mortgage</label>
+                        <input type="text" id="mortgage" name="Mortgage" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="liens-mortgages" class="block text-sm font-medium text-gray-700">Liens / Mortgages</label>
+                        <input type="text" id="liens-mortgages" name="Liens/mortgages?" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="asking-price" class="block text-sm font-medium text-gray-700">Asking Price</label>
+                        <input type="number" id="asking-price" name="Asking Price" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="timeline" class="block text-sm font-medium text-gray-700">Timeline for Selling</label>
+                        <input type="text" id="timeline" name="Timeline" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="occupancy" class="block text-sm font-medium text-gray-700">Occupancy</label>
+                        <input type="text" id="occupancy" name="Occupancy" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="bedrooms" class="block text-sm font-medium text-gray-700">Number of Bedrooms</label>
+                        <input type="number" id="bedrooms" name="Number of Bedrooms" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="bathrooms" class="block text-sm font-medium text-gray-700">Number of Bathrooms</label>
+                        <input type="number" id="bathrooms" name="Number of Bathrooms" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="sq-feet" class="block text-sm font-medium text-gray-700">Sq feet</label>
+                        <input type="number" id="sq-feet" name="Sq feet" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="home-material" class="block text-sm font-medium text-gray-700">Material of home</label>
+                        <input type="text" id="home-material" name="Material of home" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-200">
+
+            <!-- Property Condition -->
+            <div class="space-y-6">
+                <h2 class="text-2xl font-semibold text-gray-700">Property Condition</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="hvac" class="block text-sm font-medium text-gray-700">HVAC (Heating, Ventilation & Air Condition)</label>
+                        <textarea id="hvac" name="HVAC (HEATING VENTILATION & AIR CONDITION)" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <div>
+                        <label for="kitchen-cabinets" class="block text-sm font-medium text-gray-700">Kitchen Cabinets</label>
+                        <textarea id="kitchen-cabinets" name="Kitchen: Cabinets" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <div>
+                        <label for="roof-age" class="block text-sm font-medium text-gray-700">Roof (age of roof)</label>
+                        <input type="text" id="roof-age" name="Roof(age of roof)" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="electrical" class="block text-sm font-medium text-gray-700">Electrical System</label>
+                        <textarea id="electrical" name="Electrical System" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <div>
+                        <label for="plumbing" class="block text-sm font-medium text-gray-700">Plumbing</label>
+                        <textarea id="plumbing" name="Plumbing" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <div>
+                        <label for="water" class="block text-sm font-medium text-gray-700">Water</label>
+                        <textarea id="water" name="Water" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <div>
+                        <label for="bathroom-condition" class="block text-sm font-medium text-gray-700">Bathroom</label>
+                        <textarea id="bathroom-condition" name="Bathroom" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-6">
+                        <label class="block text-sm font-medium text-gray-700">Garage?</label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Garage (YES/NO)" value="Yes" class="form-radio h-4 w-4 text-indigo-600">
+                            <span class="ml-2 text-gray-700">Yes</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Garage (YES/NO)" value="No" class="form-radio h-4 w-4 text-indigo-600">
+                            <span class="ml-2 text-gray-700">No</span>
+                        </label>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <label class="block text-sm font-medium text-gray-700">Pool?</label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Pool(YES/NO)" value="Yes" class="form-radio h-4 w-4 text-indigo-600">
+                            <span class="ml-2 text-gray-700">Yes</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Pool(YES/NO)" value="No" class="form-radio h-4 w-4 text-indigo-600">
+                            <span class="ml-2 text-gray-700">No</span>
+                        </label>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <label class="block text-sm font-medium text-gray-700">Solar Panels?</label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Solar Panel (YES/NO)" value="Yes" class="form-radio h-4 w-4 text-indigo-600">
+                            <span class="ml-2 text-gray-700">Yes</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="Solar Panel (YES/NO)" value="No" class="form-radio h-4 w-4 text-indigo-600">
+                            <span class="ml-2 text-gray-700">No</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-200">
+
+            <!-- Work Needed & Reason for Selling -->
+            <div class="space-y-6">
+                <h2 class="text-2xl font-semibold text-gray-700">Additional Information</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Does it need new carpet?</label>
+                        <div class="mt-2 space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="Does it need new carpet?" value="Yes" class="form-radio h-4 w-4 text-indigo-600">
+                                <span class="ml-2 text-gray-700">Yes</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="Does it need new carpet?" value="No" class="form-radio h-4 w-4 text-indigo-600">
+                                <span class="ml-2 text-gray-700">No</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">How about paint?</label>
+                        <div class="mt-2 space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="how about paint?" value="Yes" class="form-radio h-4 w-4 text-indigo-600">
+                                <span class="ml-2 text-gray-700">Yes</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="how about paint?" value="No" class="form-radio h-4 w-4 text-indigo-600">
+                                <span class="ml-2 text-gray-700">No</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Does it need appliances?</label>
+                        <div class="mt-2 space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="Does it need appliances?" value="Yes" class="form-radio h-4 w-4 text-indigo-600">
+                                <span class="ml-2 text-gray-700">Yes</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="Does it need appliances?" value="No" class="form-radio h-4 w-4 text-indigo-600">
+                                <span class="ml-2 text-gray-700">No</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Does it need a complete gut/rehab?</label>
+                        <div class="mt-2 space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="Does it need complete gut?rehab?" value="Yes" class="form-radio h-4 w-4 text-indigo-600">
+                                <span class="ml-2 text-gray-700">Yes</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="Does it need complete gut?rehab?" value="No" class="form-radio h-4 w-4 text-indigo-600">
+                                <span class="ml-2 text-gray-700">No</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="additional-work" class="block text-sm font-medium text-gray-700">Is there any additional work to be done?</label>
+                        <textarea id="additional-work" name="Is there any additional work to be done?" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="reason-for-selling" class="block text-sm font-medium text-gray-700">Reason for selling (RFS)</label>
+                        <textarea id="reason-for-selling" name="Reason for selling(RFS)" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" id="submit-button" class="inline-flex justify-center py-3 px-8 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
+                    Submit Questionnaire
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('questionnaire-form');
+        const formStatus = document.getElementById('form-status');
+        const submitButton = document.getElementById('submit-button');
+
+        // Web3Forms endpoint
+        const scriptURL = 'https://api.web3forms.com/submit';
+
+        form.addEventListener('submit', async e => {
+            e.preventDefault(); // Prevents the default form submission (page reload)
+            submitButton.disabled = true;
+
+            const data = new FormData(form);
+            
+            try {
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: data
+                });
+
+                if (response.ok) {
+                    formStatus.textContent = 'Success! Your submission has been sent.';
+                    formStatus.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'border-red-200');
+                    formStatus.classList.add('bg-green-100', 'text-green-700', 'border-green-200');
+                    form.reset(); // Resets the form fields
+                } else {
+                    const result = await response.json();
+                    throw new Error(result.message || 'Something went wrong.');
+                }
+            } catch (error) {
+                formStatus.textContent = 'Error! Something went wrong. ' + error.message;
+                formStatus.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'border-green-200');
+                formStatus.classList.add('bg-red-100', 'text-red-700', 'border-red-200');
+                console.error('Error!', error.message);
+            } finally {
+                submitButton.disabled = false;
+                formStatus.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
